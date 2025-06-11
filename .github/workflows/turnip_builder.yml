@@ -28,6 +28,14 @@ jobs:
           turnip_workdir/ninja_log
           turnip_workdir/mesa-main/build-android-aarch64/meson-logs/meson-log.txt
 
+    - name: Upload turnip Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: upload turnip 
+        path: |
+               turnip_workdir/turnip.zip
+               turnip_workdir/turnip_adrenotools.zip
+        
     - name: Release "turnip"
       uses: softprops/action-gh-release@v1
       with:
