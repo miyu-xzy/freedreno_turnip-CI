@@ -10,13 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-
-    - name: Prepare timezone 
-      run: |
-            echo "BUILD_TIME=$(TZ=Asia/Jakarta date "+%d%m%Y")" >> $GITHUB_ENV
-            sudo rm /etc/localtime
-            sudo ln -s /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
-        
+   
     - name: Prepare environment
       run: |
         sudo sed -i 's/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu.sources
@@ -39,7 +33,7 @@ jobs:
       with:
         body: Turnip magisk module and driver package for adrenotools
         tag_name: github_run
-        name: Weekly Release ${{ env.BUILD_TIME }}
+        name: Weekly Release 
         files: |
            turnip_workdir/turnip.zip
            turnip_workdir/turnip_adrenotools.zip
